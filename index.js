@@ -1,6 +1,6 @@
 class LinkedList {
     constructor(head) {
-        this.head = new Node('start')
+        this.head = new Node(head)
     }
 
     append(value) {
@@ -67,39 +67,72 @@ class LinkedList {
             if(counter === index) {
                 return node
             }
-            if(node.next === null) {
-                return 'Size bigger than list'
-            }
             node = node.next
         }
+        return 'Size bigger than list'
     }
 
     pop() {
         let node = this.head
-        let counter = 0
-        while(node.next != null) {
-            counter++
+        while(node.next.next != null) {
             node = node.next
         }
-        node = this.at(counter)
         node.next = null
+    }
+
+    contains(value) {
+        let node = this.head
+        while(node) {
+            if(node.value === value) {
+                return true
+            }
+            node = node.next
+        }
+        return false
+    }
+
+    find(value) {
+        let node = this.head
+        let index = 1
+        while(node) {
+            if(node === null) {
+                return null
+            }
+            if(node.value === value) {
+                return index
+            }
+            index++
+            node = node.next
+        }
+    }
+
+    toString() {
+        let node = this.head
+        while(node) {
+            console.log(node.value.toString())
+            node = node.next
+        }
     }
 }
 
 class Node {
-    constructor(value, next) {
+    constructor(value) {
         this.value = value
         this.next = null
     }
 }
 
-const list = new LinkedList() // "start" at index 3
-list.append('Appended') // index 4
-list.prepend('Prepended') //index 2
-list.prepend('double prepended') //index 1
-list.append('at the end!') //index 5
-list.printList()
+const list = new LinkedList('start') // "start" at index 3
+list.prepend('2') //index 2
+list.prepend('1') //index 1
+list.append('4') // index 4
+list.append('5') //index 5
+// list.pop() // takes out 5
+// list.printList()
 // list.size()
-// console.log(list.at(6))
-list.pop()
-list.pop()
+// console.log(list.at(6)) //size is bigger than list
+// console.log(list.at(2)) // node {value = "2"}
+// console.log(list.contains('6')) // false
+// console.log(list.contains('1')) //true
+// console.log(list.find('4'))
+list.toString()
