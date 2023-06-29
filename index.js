@@ -1,6 +1,6 @@
 class LinkedList {
     constructor(head) {
-        this.head = new Node(head)
+        this.head = null
     }
 
     append(value) {
@@ -30,18 +30,6 @@ class LinkedList {
             }
             node = node.next
         }
-    }
-
-    printList() {
-        let node = this.head
-        while(node) {
-            console.log(node.value)
-            if(node.next === null) {
-                return
-            }
-            node = node.next
-        }
-        return node
     }
 
     header() {
@@ -122,17 +110,16 @@ class Node {
     }
 }
 
-const list = new LinkedList('start') // "start" at index 3
-list.prepend('2') //index 2
-list.prepend('1') //index 1
-list.append('4') // index 4
-list.append('5') //index 5
-// list.pop() // takes out 5
-// list.printList()
-// list.size()
+const list = new LinkedList()
+list.prepend('two') //index 2 //starting point
+list.prepend('one') //index 1
+list.append('three') // index 3
+list.append('four') //index 4
+// list.pop() // takes out 4
+// list.size() // gives you size of list
 // console.log(list.at(6)) //size is bigger than list
 // console.log(list.at(2)) // node {value = "2"}
 // console.log(list.contains('6')) // false
 // console.log(list.contains('1')) //true
-// console.log(list.find('4'))
-list.toString()
+// console.log(list.find('four')) //prints out index of list(4)
+list.toString() // prints out list
