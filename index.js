@@ -43,6 +43,47 @@ class LinkedList {
         }
         return node
     }
+
+    header() {
+        return this.head
+    }
+
+    tail() {
+        let node = this.head
+        while(node) {
+            if(node.next === null) {
+                return node
+            }
+            node = node.next
+        }
+        return
+    }
+
+    at(index) {
+        let counter = 0
+        let node = this.head
+        while(node) {
+            counter++
+            if(counter === index) {
+                return node
+            }
+            if(node.next === null) {
+                return 'Size bigger than list'
+            }
+            node = node.next
+        }
+    }
+
+    pop() {
+        let node = this.head
+        let counter = 0
+        while(node.next != null) {
+            counter++
+            node = node.next
+        }
+        node = this.at(counter)
+        node.next = null
+    }
 }
 
 class Node {
@@ -52,10 +93,13 @@ class Node {
     }
 }
 
-const list = new LinkedList('list')
-list.append('Appended')
-list.prepend('Prepended')
-list.prepend('double prepended')
-list.append('at the end!')
+const list = new LinkedList() // "start" at index 3
+list.append('Appended') // index 4
+list.prepend('Prepended') //index 2
+list.prepend('double prepended') //index 1
+list.append('at the end!') //index 5
 list.printList()
-list.size()
+// list.size()
+// console.log(list.at(6))
+list.pop()
+list.pop()
