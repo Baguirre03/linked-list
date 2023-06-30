@@ -20,12 +20,14 @@ class LinkedList {
     }
 
     size() {
-        let counter = 0
+        if(this.head === null) {
+            return 0
+        }
         let node = this.head
+        let counter = 0
         while(node) {
             counter++
             if (node.next === null) {
-                console.log(counter)
                 return counter
             }
             node = node.next
@@ -51,13 +53,13 @@ class LinkedList {
         let counter = 0
         let node = this.head
         while(node) {
-            counter++
             if(counter === index) {
                 return node
             }
+            counter++
             node = node.next
         }
-        return 'Size bigger than list'
+        return false
     }
 
     pop() {
@@ -96,10 +98,28 @@ class LinkedList {
 
     toString() {
         let node = this.head
+        let stringList = `(${node.value}) -> `
         while(node) {
-            console.log(node.value.toString())
             node = node.next
+            stringList += `(${node.value}) -> `
+            if(node.next === null) {
+                return stringList + ' Null'
+            }
         }
+        return stringlist
+    }
+
+    insertAt(value, index) {
+        index--
+        if(this.at(index) == false) {
+            return 'not possible'
+        }
+        let beforeNode = this.at(index)
+        let afterNode = beforeNode.next
+        let createdNode = new Node(value)
+
+        beforeNode.next = createdNode
+        createdNode.next = afterNode
     }
 }
 
@@ -111,15 +131,25 @@ class Node {
 }
 
 const list = new LinkedList()
-list.prepend('two') //index 2 //starting point
-list.prepend('one') //index 1
-list.append('three') // index 3
-list.append('four') //index 4
-// list.pop() // takes out 4
-// list.size() // gives you size of list
-// console.log(list.at(6)) //size is bigger than list
-// console.log(list.at(2)) // node {value = "2"}
-// console.log(list.contains('6')) // false
-// console.log(list.contains('1')) //true
-// console.log(list.find('four')) //prints out index of list(4)
-list.toString() // prints out list
+list.prepend('one') //index 1 //starting point
+list.prepend('zero') //index 0
+
+list.append('two') // index 2
+list.append('three') //index 3
+
+list.pop() // takes out index 3
+list.size() // gives you size of list (at this point 4)
+
+list.at(6) //size is bigger than list
+list.at(2) // node {value = "2"} (finds node at certain index)
+
+list.contains('notThere')// false
+list.contains('1') //true
+
+list.find('four')//prints out index of list(4)
+
+list.insertAt('inserting this at 2', 2) //inserts this at 2
+list.insertAt('cannot insert this', 10) //returns "not posisble"
+
+console.log(list.toString()) //(zero) -> (one) -> (inserting this at 2) -> (two) -> null
+
