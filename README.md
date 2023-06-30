@@ -22,4 +22,4 @@ I learned a lot doing this and it was actually quite fun! It was not too hard to
 - `toString()` - represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: `( value ) -> ( value ) -> ( value ) -> null`
 - `insertAt(value, index)` - inserts a new node with the provided `value` at the given `index`.
 
-_All of the tests on the bottom have a comment providing what they should return._
+_All of the tests on the bottom of `index.js` have a comment providing what they should return._
