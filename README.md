@@ -17,13 +17,9 @@ I learned a lot doing this and it was actually quite fun! It was not too hard to
 `size()`- returns the total number of nodes in the list
 
 `head()`- returns the first node in the list
-
 `tail()`- returns the last node in the list
-
 `at(index)`- returns the node at the given `index`
-
 `pop()`- removes the last element from the list
-
 `contains(value)`- returns true if the passed in value is in the list and otherwise returns false.
 
 `find(value)` - returns the index of the node containing value, or null if not found.
