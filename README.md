@@ -1,6 +1,6 @@
 # Linked Lists
 
-[**Link to Assignment**](https://baguirre03.github.io/weather-app/)
+[**Link to Assignment**]([https://baguirre03.github.io/weather-app/](https://www.theodinproject.com/lessons/javascript-linked-lists))
 
 A linked list is a linear collection of data elements called nodes that “point” to the next node by means of a pointer.
 
